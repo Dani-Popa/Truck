@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:cage="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Truck list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+
+<form action="#" th:action="@{/trucks}" th:object="${truck}" method="post">
+    <div>
+        <label th:for="${truckID}">TruckID</label>
+
+    <input type="text" id="truckID" name="truckID" th:value="*{truckID}" />
+        </div>
+    <div>
+        <label th:for="${serialNumber}">Serial Number</label>
+    <input type="text" id="serialNumber" name="serialNumber" th:value="*{serialNumber}" />
+    </div>
+
+    <div>
+        <label th:for="${producer}">Producer</label>
+        <input type="text" id="producer" name="producer" th:value="*{producer}" />
+    </div>
+
+    <div>
+        <input type="submit" id="doUpdate" name="save cage" value="create cage"/>
+    </div>
+</form>
+
+
+<br/>
+<br/>
+<th:block th:each="truck : ${trucks}">
+    <tr>
+        <td th:text="${truck.truckID}">A Smoke Test'</td>
+    </tr>
+</th:block>
+
+<table id="myTableId" cage:table="true">
+    <thead>
+    <tr>
+        <th>truckID</th>
+        <th>serialNumber</th>
+        <th>producer</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="truck : ${trucks}">
+        <td th:text="${truck.truckID}">1</td>
+        <td th:text="${truck.serialNumber}">Doe</td>
+        <td th:text="${truck.producer}">Doe</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
